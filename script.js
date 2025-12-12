@@ -210,7 +210,7 @@ cards.forEach(card => {
 });
 
 // Skills highlight hover effect
-const skillHighlights = document.querySelectorAll('.skill-highlight');
+const skillHighlights = document.querySelectorAll('.skill-tag-icon');
 skillHighlights.forEach(skill => {
     skill.addEventListener('mouseenter', () => {
         skill.style.transform = 'scale(1.05)';
