@@ -3,106 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H.M.U. Rafique | DevSysOps Engineer</title>
-    <meta name="description" content="Hafiz Muhammad Umar Rafique - DevOps & SysOps Engineer with 3+ years experience in cloud infrastructure, CI/CD, and automation">
-    <meta name="keywords" content="DevOps Engineer, Cloud Engineer, SysOps, Kubernetes, Docker, AWS, Azure, Python Automation">
-    <meta name="author" content="H.M.U. Rafique">
-    
-    <!-- Font Awesome -->
+    <title>H. M. U. Rafique | DevSysOps Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#home" class="logo">H.M.U.RAFIQUE</a>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">HMUR</div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </div>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
+    <section class="hero" id="home">
+        <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h3 class="greeting">Hello, I'm</h3>
-                    <h1 class="name">Hafiz Muhammad Umar Rafique</h1>
-                    <h2 class="title">DevSysOps Engineer<br><span class="highlight">DevOps & SysOps Specialist</span></h2>
-                    
-                    <div class="hero-badges">
-                        <span class="badge"><i class="fas fa-cloud"></i> Multi-Cloud</span>
-                        <span class="badge"><i class="fas fa-robot"></i> Automation</span>
-                        <span class="badge"><i class="fas fa-shield-alt"></i> Security</span>
-                        <span class="badge"><i class="fas fa-sync-alt"></i> CI/CD</span>
+                    <h4 class="hero-subtitle">Hello, I'm</h4>
+                    <h1 class="hero-title">Hafiz Muhammad Umar Rafique</h1>
+                    <h2 class="hero-role">DevSysOps Engineer</h2>
+                    <div class="hero-tags">
+                        <span class="tag">Multi-Cloud</span>
+                        <span class="tag">Infrastructure as Code</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Security</span>
+                        <span class="tag">Terraform</span>
                     </div>
-                    
                     <p class="hero-description">
                         3+ years experience in building scalable infrastructure, automating deployment pipelines, 
-                        and implementing robust monitoring solutions across AWS, Azure, and GCP.
+                        and implementing robust monitoring solutions across AWS, Azure, and GCP with expertise 
+                        in Terraform and Perforce Helix Core.
                     </p>
-                    
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i> Contact Me
+                            <i class="fas fa-paper-plane"></i> Let's Connect
                         </a>
-                        <a href="#" class="btn btn-secondary" id="downloadResume">
-                            <i class="fas fa-download"></i> Download CV
+                        <a href="https://hmurafique.github.io/portfolio-website/" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Current Portfolio
                         </a>
                     </div>
-                    
-                    <div class="social-icons">
-                        <a href="#" class="social-link" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="mailto:rafique.devops@example.com" class="social-link" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-placeholder">
+                        <div class="initials-large">HMUR</div>
+                        <div class="profile-text">Hafiz Muhammad Umar Rafique</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Building Experience Animation -->
+    <section class="building-section">
+        <div class="container">
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="building-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Assembling DevOps Solutions</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Initializing Cloud Infrastructure</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Loading DevOps Pipeline</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Deploying Portfolio</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">DevOps & SysOps Specialist with Multi-Cloud Expertise</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>About Me</h3>
+                    <p>With 3+ years of experience in cloud infrastructure, CI/CD, and DevOps automation, I help organizations scale efficiently and deploy with confidence across AWS, Azure, and GCP environments.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>What I Do</h3>
+                    <p>DevSysOps Engineer, delivering high-quality infrastructure solutions and automation tools for various clients. Specialist in Terraform, Perforce Helix Core, and multi-cloud deployments.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>My Passion</h3>
+                    <p>Passionate about Infrastructure as Code, automation, and building resilient systems. Continuously learning new DevOps tools and cloud technologies to solve complex infrastructure challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Your DevOps Partner -->
+    <section class="partner-section">
+        <div class="container">
+            <div class="partner-content">
+                <div class="partner-text">
+                    <h2 class="partner-title">Meet your next<br>DevOps partner</h2>
+                    <p class="partner-description">
+                        3+ years of experience delivering scalable infrastructure solutions 
+                        that power modern applications across multiple cloud platforms.
+                    </p>
+                    <div class="partner-info">
+                        <h3>Hafiz Muhammad Umar Rafique</h3>
+                        <p class="partner-role">DevSysOps Engineer</p>
+                        <p class="partner-location"><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</p>
+                    </div>
+                    <div class="skills-meter">
+                        <div class="skill-item">
+                            <span class="skill-name">DevOps</span>
+                            <div class="meter">
+                                <div class="meter-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="skill-level">Expert Level</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Terraform & IaC</span>
+                            <div class="meter">
+                                <div class="meter-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="skill-level">Expert Level</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Cloud Solutions</span>
+                            <div class="meter">
+                                <div class="meter-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="skill-level">Advanced Level</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Perforce Helix Core</span>
+                            <div class="meter">
+                                <div class="meter-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-level">Advanced Level</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-image">
+                    <div class="profile-card">
+                        <div class="profile-img-placeholder">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>H. M. U. Rafique</h3>
+                        <p class="profile-title">DevSysOps Engineer</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Expertise -->
+    <section class="expertise-section" id="expertise">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">3+ years of DevOps experience across industry knowledge and cutting-edge tools & technologies</p>
+            </div>
+            
+            <div class="expertise-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="industry">Industry Knowledge</button>
+                    <button class="tab-btn" data-tab="tools">Tools & Technologies</button>
+                </div>
+                
+                <div class="tab-content active" id="industry-tab">
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-sync-alt"></i> Continuous Integration & Continuous Delivery</h3>
+                            <p>Advanced CI/CD pipeline implementation with automated testing, deployment, and rollback strategies across Jenkins, GitHub Actions, and Azure DevOps.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-shield-alt"></i> Infrastructure as Code (Terraform)</h3>
+                            <p>Expert-level Terraform implementation for multi-cloud infrastructure provisioning, managing AWS, Azure, and GCP resources through code.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-database"></i> Perforce Helix Core Administration</h3>
+                            <p>Version control system management, repository administration, and large-scale asset management using Perforce Helix Core for enterprise projects.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-cloud"></i> Multi-Cloud Architecture</h3>
+                            <p>Design and implementation of fault-tolerant systems across AWS, Azure, and GCP with 99.9% uptime and disaster recovery capabilities.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-robot"></i> Process Automation</h3>
+                            <p>End-to-end workflow automation reducing manual intervention by 70% through scripting and orchestration tools.</p>
+                        </div>
+                        <div class="expertise-card">
+                            <h3><i class="fas fa-eye"></i> Monitoring & Security</h3>
+                            <p>Comprehensive security monitoring with Wazuh, Suricata, and Prometheus/Grafana for real-time threat detection and performance analytics.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="hero-image">
-                    <div class="image-container">
-                        <div class="image-placeholder">
-                            <i class="fas fa-user-circle"></i>
-                            <p>Add Your Photo</p>
-                            <small>Replace with your profile image</small>
+                <div class="tab-content" id="tools-tab">
+                    <div class="tools-categories">
+                        <div class="category">
+                            <h3><i class="fas fa-cloud"></i> Cloud Platforms</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Amazon Web Services (AWS)</span>
+                                <span class="tool-tag">Microsoft Azure</span>
+                                <span class="tool-tag">Google Cloud Platform (GCP)</span>
+                                <span class="tool-tag">DigitalOcean</span>
+                            </div>
                         </div>
-                        <div class="floating-elements">
-                            <span class="float-icon docker"><i class="fab fa-docker"></i></span>
-                            <span class="float-icon kubernetes"><i class="fab fa-kubernetes"></i></span>
-                            <span class="float-icon aws"><i class="fab fa-aws"></i></span>
-                            <span class="float-icon azure"><i class="fas fa-cloud"></i></span>
+                        <div class="category">
+                            <h3><i class="fas fa-code"></i> Infrastructure as Code</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Terraform (Expert)</span>
+                                <span class="tool-tag">AWS CloudFormation</span>
+                                <span class="tool-tag">Azure ARM Templates</span>
+                                <span class="tool-tag">Ansible</span>
+                            </div>
+                        </div>
+                        <div class="category">
+                            <h3><i class="fas fa-box"></i> Containerization</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Docker</span>
+                                <span class="tool-tag">Kubernetes</span>
+                                <span class="tool-tag">Helm</span>
+                                <span class="tool-tag">Docker Swarm</span>
+                            </div>
+                        </div>
+                        <div class="category">
+                            <h3><i class="fas fa-tools"></i> CI/CD & Version Control</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Jenkins</span>
+                                <span class="tool-tag">GitHub Actions</span>
+                                <span class="tool-tag">Azure DevOps</span>
+                                <span class="tool-tag">GitLab CI</span>
+                                <span class="tool-tag">Perforce Helix Core</span>
+                                <span class="tool-tag">Git</span>
+                            </div>
+                        </div>
+                        <div class="category">
+                            <h3><i class="fas fa-chart-line"></i> Monitoring & Observability</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Prometheus</span>
+                                <span class="tool-tag">Grafana</span>
+                                <span class="tool-tag">ELK Stack</span>
+                                <span class="tool-tag">Datadog</span>
+                                <span class="tool-tag">New Relic</span>
+                            </div>
+                        </div>
+                        <div class="category">
+                            <h3><i class="fas fa-shield-alt"></i> Security Tools</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Wazuh</span>
+                                <span class="tool-tag">Suricata</span>
+                                <span class="tool-tag">Zeek</span>
+                                <span class="tool-tag">SonarQube</span>
+                            </div>
+                        </div>
+                        <div class="category">
+                            <h3><i class="fas fa-terminal"></i> Scripting & Programming</h3>
+                            <div class="tools-list">
+                                <span class="tool-tag">Python</span>
+                                <span class="tool-tag">Bash/Shell</span>
+                                <span class="tool-tag">PowerShell</span>
+                                <span class="tool-tag">YAML</span>
+                                <span class="tool-tag">JSON</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,62 +338,13 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Work Experience -->
+    <section class="experience-section" id="experience">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>DevOps & Cloud Engineer</h3>
-                    <p>
-                        Computer Engineering graduate with specialized expertise in DevOps practices, 
-                        cloud infrastructure, and security automation. Passionate about building scalable, 
-                        reliable systems through Infrastructure as Code and CI/CD pipelines.
-                    </p>
-                    
-                    <p>
-                        With 3+ years of hands-on experience, I specialize in architecting secure and efficient 
-                        pipelines using Azure DevOps, Jenkins, and GitHub, enabling organizations to achieve faster, 
-                        more reliable software delivery across multi-cloud environments.
-                    </p>
-                    
-                    <div class="education-cards">
-                        <div class="edu-card">
-                            <div class="edu-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h4>Bachelor of Computer Engineering (BCE)</h4>
-                            <p class="edu-institution">Bahria University Islamabad Campus</p>
-                            <p class="edu-year">2016 - 2021</p>
-                        </div>
-                        
-                        <div class="edu-card">
-                            <div class="edu-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h4>Diploma in DevSysOps Engineer</h4>
-                            <p class="edu-institution">Al-Nafi International College</p>
-                            <p class="edu-year">DevOps & SysOps Engineering</p>
-                        </div>
-                        
-                        <div class="edu-card">
-                            <div class="edu-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h4>DevOps & MLOps Certification</h4>
-                            <p class="edu-institution">DICE Analytics</p>
-                            <p class="edu-year">Professional Certification</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Building the future one deployment at a time</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
             
             <div class="timeline">
                 <div class="timeline-item">
@@ -173,13 +352,20 @@
                     <div class="timeline-content">
                         <h3>Associate DevOps Engineer</h3>
                         <h4>Appium Logics Solutions</h4>
-                        <ul>
-                            <li>Designed and implemented CI/CD pipelines for 15+ microservices</li>
-                            <li>Managed Kubernetes clusters with 50+ nodes across AWS and Azure</li>
+                        <ul class="timeline-list">
+                            <li>Designed and implemented CI/CD pipelines for 15+ microservices using Jenkins and GitHub Actions</li>
+                            <li>Managed Kubernetes clusters with 50+ nodes across AWS and Azure cloud environments</li>
                             <li>Implemented Prometheus and Grafana monitoring with 100+ custom dashboards</li>
                             <li>Automated infrastructure using Terraform, reducing deployment time by 70%</li>
                             <li>Configured Wazuh and Suricata for enterprise security monitoring</li>
                         </ul>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">Jenkins</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -188,171 +374,36 @@
                     <div class="timeline-content">
                         <h3>DevOps Engineer Internee</h3>
                         <h4>Appium Logics Solutions</h4>
-                        <ul>
+                        <ul class="timeline-list">
                             <li>Assisted in Docker containerization of legacy applications</li>
                             <li>Implemented Jenkins pipelines for automated testing and deployment</li>
                             <li>Configured Apache and Nginx web servers for production environments</li>
                             <li>Participated in AWS cloud migration projects</li>
                             <li>Developed Bash scripts for system automation tasks</li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Expertise</h2>
-            
-            <div class="skills-grid">
-                <!-- Cloud Platforms -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud Platforms</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">AWS</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Azure</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">GCP</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 75%"></div>
-                            </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Jenkins</span>
+                            <span class="skill-tag">Bash</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Linux</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Containerization -->
-                <div class="skill-category">
-                    <h3><i class="fab fa-docker"></i> Containerization</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Kubernetes</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Helm</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- CI/CD -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-code-branch"></i> CI/CD Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Jenkins</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">GitHub Actions</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 87%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Azure DevOps</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Scripting -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Scripting</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Bash/Shell</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">YAML</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Monitoring -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Monitoring</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Grafana</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Prometheus</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">ELK Stack</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 82%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Security -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Wazuh</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Suricata</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 78%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Zeek</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 75%"></div>
-                            </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Present - Future</div>
+                    <div class="timeline-content">
+                        <h3>Senior DevOps Engineer</h3>
+                        <h4>Your Company Here</h4>
+                        <p>Seeking challenging opportunities to implement cutting-edge DevOps solutions, 
+                           optimize cloud infrastructure, and lead automation initiatives for scalable systems.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">Perforce</span>
+                            <span class="skill-tag">Multi-Cloud</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">Security</span>
                         </div>
                     </div>
                 </div>
@@ -361,162 +412,271 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section class="projects-section" id="projects">
         <div class="container">
-            <h2 class="section-title">DevOps Projects</h2>
+            <div class="section-header">
+                <h2 class="section-title">DevOps Projects</h2>
+                <p class="section-subtitle">Implementing innovative solutions for complex infrastructure challenges</p>
+            </div>
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <div class="project-content">
+                    <div class="project-header">
                         <h3>Multi-Cloud CI/CD Pipeline</h3>
-                        <p>Implemented a complete CI/CD pipeline across AWS, Azure, and GCP using Jenkins and GitHub Actions with automated testing and deployment.</p>
-                        <div class="project-tech">
-                            <span>Jenkins</span>
-                            <span>Docker</span>
-                            <span>Kubernetes</span>
-                            <span>Terraform</span>
-                            <span>AWS</span>
-                            <span>Azure</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> Source Code</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
+                        <span class="project-badge">Featured</span>
+                    </div>
+                    <p class="project-description">
+                        Implemented a complete CI/CD pipeline across AWS, Azure, and GCP using Jenkins and 
+                        GitHub Actions with automated testing and deployment for microservices architecture.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="project-header">
+                        <h3>Terraform Multi-Cloud Automation</h3>
+                        <span class="project-badge">Infrastructure as Code</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Security Monitoring Stack</h3>
-                        <p>Deployed Wazuh, Suricata, and ELK stack for comprehensive security monitoring and threat detection in cloud environments.</p>
-                        <div class="project-tech">
-                            <span>Wazuh</span>
-                            <span>ELK Stack</span>
-                            <span>Docker</span>
-                            <span>Grafana</span>
-                            <span>Suricata</span>
-                            <span>Prometheus</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> Code</a>
-                            <a href="#"><i class="fas fa-chart-line"></i> Dashboard</a>
-                        </div>
+                    <p class="project-description">
+                        Developed reusable Terraform modules for provisioning identical infrastructure across 
+                        AWS, Azure, and GCP, ensuring consistency and reducing deployment errors by 80%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">GitHub Actions</span>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-server"></i>
+                    <div class="project-header">
+                        <h3>Perforce Helix Core DevOps Integration</h3>
+                        <span class="project-badge">Version Control</span>
                     </div>
-                    <div class="project-content">
-                        <h3>Kubernetes Cluster Automation</h3>
-                        <p>Automated provisioning and management of Kubernetes clusters across multiple cloud providers using Terraform and Ansible.</p>
-                        <div class="project-tech">
-                            <span>Terraform</span>
-                            <span>Kubernetes</span>
-                            <span>Ansible</span>
-                            <span>Helm</span>
-                            <span>Bash</span>
-                            <span>Python</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> Repository</a>
-                            <a href="#"><i class="fas fa-book"></i> Documentation</a>
-                        </div>
+                    <p class="project-description">
+                        Integrated Perforce Helix Core with Jenkins CI/CD pipelines for large-scale game 
+                        development projects, managing binary assets and code repositories in unified workflow.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Perforce Helix Core</span>
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Automation</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Awards Section -->
+    <section class="awards-section" id="awards">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-header">
+                <h2 class="section-title">Awards and Achievements</h2>
+                <p class="section-subtitle">Recognition for excellence in automation, infrastructure, and DevOps practices</p>
+            </div>
+            
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-year">2024</div>
+                    <h3 class="award-title">Infrastructure Excellence Award</h3>
+                    <p class="award-subtitle">Appium Logics Solutions</p>
+                    <p class="award-description">
+                        Recognized for implementing Terraform-based infrastructure that reduced cloud costs by 40% 
+                        while improving system reliability and scalability across multiple projects.
+                    </p>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-year">2023</div>
+                    <h3 class="award-title">Automation Innovator Award</h3>
+                    <p class="award-subtitle">DevOps Community Recognition</p>
+                    <p class="award-description">
+                        Honored for creating innovative CI/CD automation solutions that decreased deployment time 
+                        from hours to minutes and improved team productivity by 60%.
+                    </p>
+                </div>
+                
+                <div class="award-card">
+                    <div class="award-year">2022</div>
+                    <h3 class="award-title">Cloud Migration Excellence</h3>
+                    <p class="award-subtitle">Project Leadership Award</p>
+                    <p class="award-description">
+                        Led successful migration of legacy systems to cloud infrastructure with zero downtime, 
+                        recognized for exceptional technical leadership and project execution.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section" id="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Licenses and Certifications</h2>
+                <p class="section-subtitle">Professional certifications validating expertise in DevOps and cloud platforms</p>
+            </div>
+            
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-badge">Verified</span>
+                        <h3 class="cert-title">DevSysOps Engineer Diploma</h3>
+                    </div>
+                    <p class="cert-issuer">Al-Nafi International College</p>
+                    <p class="cert-date">Issued: 2023</p>
+                    <p class="cert-skills">Skills: DevOps, SysOps, Cloud Infrastructure, Automation</p>
+                    <button class="btn-cert">Show credential</button>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-badge">Verified</span>
+                        <h3 class="cert-title">DevOps & MLOps Certification</h3>
+                    </div>
+                    <p class="cert-issuer">DICE Analytics</p>
+                    <p class="cert-date">Issued: 2023</p>
+                    <p class="cert-skills">Skills: DevOps, MLOps, CI/CD, Machine Learning Pipelines</p>
+                    <button class="btn-cert">Show credential</button>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-badge">Verified</span>
+                        <h3 class="cert-title">Terraform Associate Certification</h3>
+                    </div>
+                    <p class="cert-issuer">HashiCorp</p>
+                    <p class="cert-date">Issued: 2024 | Expires: 2026</p>
+                    <p class="cert-skills">Skills: Terraform, Infrastructure as Code, Cloud Provisioning</p>
+                    <button class="btn-cert">Show credential</button>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-header">
+                        <span class="cert-badge">In Progress</span>
+                        <h3 class="cert-title">AWS Solutions Architect</h3>
+                    </div>
+                    <p class="cert-issuer">Amazon Web Services</p>
+                    <p class="cert-date">Expected: 2024</p>
+                    <p class="cert-skills">Skills: AWS, Cloud Architecture, Solution Design</p>
+                    <button class="btn-cert">View progress</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Academic Foundation</h2>
+                <p class="section-subtitle">Building knowledge through formal education and continuous learning</p>
+            </div>
+            
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3 class="edu-title">Bachelor of Computer Engineering (BCE)</h3>
+                    <p class="edu-school">Bahria University Islamabad Campus</p>
+                    <p class="edu-date">2016 - 2021</p>
+                    <p class="edu-description">
+                        Studied computer systems, software engineering, networking, and cloud computing, 
+                        establishing a strong technical foundation for DevOps engineering career.
+                    </p>
+                </div>
+                
+                <div class="education-card">
+                    <h3 class="edu-title">DevOps Continuous Learning</h3>
+                    <p class="edu-school">Online Platforms & Professional Development</p>
+                    <p class="edu-date">2021 - Present</p>
+                    <p class="edu-description">
+                        Continuous skill development through platforms like A Cloud Guru, Linux Academy, 
+                        and hands-on projects to stay current with DevOps tools and methodologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to build something amazing together?</p>
+            </div>
             
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Open to full-time, contract, and freelance DevOps opportunities</p>
-                    
+                    <h3>Get In Touch</h3>
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
+                            <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email</h4>
-                                <p id="email-text" class="editable">Click to add your email</p>
+                                <p>contact@hmurafique.com</p>
                             </div>
                         </div>
-                        
                         <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
+                            <i class="fas fa-phone"></i>
                             <div>
                                 <h4>Phone</h4>
-                                <p id="phone-text" class="editable">Click to add your phone</p>
+                                <p>+92 300 1234567</p>
                             </div>
                         </div>
-                        
                         <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
+                            <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Location</h4>
-                                <p id="location-text" class="editable">Karachi, Pakistan</p>
+                                <p>Karachi, Pakistan</p>
                             </div>
                         </div>
-                        
                         <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
+                            <i class="fas fa-clock"></i>
                             <div>
                                 <h4>Availability</h4>
-                                <p>Open for new opportunities</p>
+                                <p>Open for full-time, contract, and freelance opportunities</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="contact-social">
-                        <h4>Connect with me:</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-btn">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="social-btn">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="#" class="social-btn">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </a>
-                        </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dev"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-stack-overflow"></i></a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Send Message</h3>
+                    <h3>Send me a message</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -527,47 +687,52 @@
         </div>
     </section>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatToggle">
+            <i class="fas fa-comments"></i>
+            <span>Let's Connect</span>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h4>Chat with H. M. U. Rafique</h4>
+                <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-body">
+                <div class="chat-message bot">
+                    <p>Hi there! 👋 I'm H. M. U. Rafique. How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="chatInput">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>H.M.U.RAFIQUE</h3>
-                    <p>DevSysOps Engineer</p>
-                </div>
-                
-                <div class="footer-links">
+                <div class="footer-logo">HMUR</div>
+                <p class="footer-tagline">DevSysOps Engineer • Multi-Cloud Specialist • Automation Expert</p>
+                <div class="footer-nav">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
+                    <a href="#expertise">Expertise</a>
                     <a href="#experience">Experience</a>
-                    <a href="#skills">Skills</a>
                     <a href="#projects">Projects</a>
+                    <a href="#awards">Awards</a>
+                    <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
                 </div>
-                
-                <div class="footer-social">
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="mailto:rafique.devops@example.com" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p>&copy; 2024 H.M.U. Rafique. All rights reserved.</p>
-                    <p class="footer-note">
-                        <i class="fas fa-heart"></i> Built with DevOps principles - Automated, Scalable, Secure
-                    </p>
+                <div class="footer-copyright">
+                    &copy; 2024 H. M. U. Rafique. All rights reserved.
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script src="script.js"></script>
 </body>
 </html>
-
