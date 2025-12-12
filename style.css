@@ -932,7 +932,7 @@ body {
     color: white;
 }
 
-/* Education Section */
+/* Education Section Styles */
 .education-section {
     padding: 5rem 0;
     background: white;
@@ -951,6 +951,8 @@ body {
     box-shadow: var(--shadow);
     transition: var(--transition);
     border-left: 4px solid var(--primary);
+    position: relative;
+    overflow: hidden;
 }
 
 .education-card:hover {
@@ -958,27 +960,86 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .edu-title {
     color: var(--dark);
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+.edu-date {
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .edu-school {
     color: var(--primary);
     font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.edu-date {
-    color: var(--gray);
-    font-size: 0.9rem;
     margin-bottom: 1rem;
+    font-size: 1.1rem;
 }
 
 .edu-description {
     color: var(--dark-light);
     line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.edu-tag {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Responsive adjustments for education section */
+@media (max-width: 768px) {
+    .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .edu-date {
+        align-self: flex-start;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Contact Section */
