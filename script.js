@@ -1,222 +1,137 @@
-// DOM Ready
+// script.js - Complete JavaScript for H. M. U. Rafique Portfolio
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
+    
+    // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
     
-    // Close mobile menu when clicking on links
+    // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         });
     });
     
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
+    // Tab Switching Functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-    // Check for saved theme or prefer-color-scheme
-    const savedTheme = localStorage.getItem('theme') || 
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-    
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons and contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
     });
     
-    function updateThemeIcon(theme) {
-        if (theme === 'dark') {
-            themeIcon.className = 'fas fa-sun';
-        } else {
-            themeIcon.className = 'fas fa-moon';
+    // Chat Widget Functionality
+    const chatToggle = document.getElementById('chatToggle');
+    const chatBox = document.getElementById('chatBox');
+    const chatClose = document.getElementById('chatClose');
+    const chatInput = document.getElementById('chatInput');
+    const sendMessageBtn = document.getElementById('sendMessage');
+    
+    if (chatToggle && chatBox) {
+        // Toggle chat box
+        chatToggle.addEventListener('click', function() {
+            chatBox.classList.toggle('active');
+        });
+        
+        // Close chat box
+        if (chatClose) {
+            chatClose.addEventListener('click', function() {
+                chatBox.classList.remove('active');
+            });
+        }
+        
+        // Send message functionality
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'chat-message user';
+                userMessage.innerHTML = `<p>${message}</p>`;
+                document.querySelector('.chat-body').appendChild(userMessage);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                const chatBody = document.querySelector('.chat-body');
+                chatBody.scrollTop = chatBody.scrollHeight;
+                
+                // Simulate bot response after delay
+                setTimeout(() => {
+                    const botResponses = [
+                        "Thanks for your message! I'll get back to you soon.",
+                        "That's interesting! Could you tell me more about that?",
+                        "I can help you with DevOps, Terraform, or Perforce Helix Core questions. What would you like to know?",
+                        "Great question! As a DevSysOps Engineer, I specialize in multi-cloud infrastructure and CI/CD pipelines.",
+                        "Feel free to email me at contact@hmurafique.com for detailed discussions."
+                    ];
+                    
+                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'chat-message bot';
+                    botMessage.innerHTML = `<p>${randomResponse}</p>`;
+                    document.querySelector('.chat-body').appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1000);
+            }
+        }
+        
+        // Send message on button click
+        if (sendMessageBtn) {
+            sendMessageBtn.addEventListener('click', sendMessage);
+        }
+        
+        // Send message on Enter key
+        if (chatInput) {
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
         }
     }
     
-    // Download Resume
-    const downloadBtn = document.getElementById('downloadResume');
-    downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Create a simple resume content
-        const resumeContent = `
-=============================================
-        HAFIZ MUHAMMAD UMAR RAFIQUE
-            DevSysOps Engineer
-=============================================
-
-CONTACT INFORMATION
-───────────────────
-Email: [Click to add your email]
-Phone: [Click to add your phone]
-Location: Karachi, Pakistan
-LinkedIn: [Your LinkedIn Profile]
-GitHub: [Your GitHub Profile]
-
-SUMMARY
-───────
-DevOps Engineer with 3+ years of experience in designing, implementing, 
-and managing cloud infrastructure, CI/CD pipelines, and monitoring solutions.
-Expertise in multi-cloud environments (AWS, Azure, GCP), containerization 
-(Docker, Kubernetes), and security tools (Wazuh, Suricata, ELK Stack).
-
-EDUCATION
-─────────
-• Bachelor of Computer Engineering (BCE)
-  Bahria University Islamabad Campus
-  2016 - 2021
-
-• Diploma in DevSysOps Engineer
-  Al-Nafi International College
-  DevOps & SysOps Engineering
-
-• DevOps & MLOps Certification
-  DICE Analytics
-
-EXPERIENCE
-──────────
-Associate DevOps Engineer | Appium Logics Solutions
-June 2023 - February 2024
-- Designed and implemented CI/CD pipelines for 15+ microservices
-- Managed Kubernetes clusters with 50+ nodes across AWS and Azure
-- Implemented Prometheus and Grafana monitoring with 100+ dashboards
-- Automated infrastructure using Terraform, reducing deployment time by 70%
-- Configured Wazuh and Suricata for enterprise security monitoring
-
-DevOps Engineer Internee | Appium Logics Solutions
-January 2023 - June 2023
-- Assisted in Docker containerization of legacy applications
-- Implemented Jenkins pipelines for automated testing and deployment
-- Configured Apache and Nginx web servers for production
-- Participated in AWS cloud migration projects
-- Developed Bash scripts for system automation
-
-TECHNICAL SKILLS
-────────────────
-Cloud Platforms:    AWS, Azure, GCP
-Containerization:   Docker, Kubernetes, Helm
-CI/CD Tools:        Jenkins, GitHub Actions, Azure DevOps
-Scripting:          Bash/Shell, Python, YAML
-Monitoring:         Grafana, Prometheus, ELK Stack
-Security:           Wazuh, Suricata, Zeek
-Web Servers:        Apache, Nginx, IIS
-
-PROJECTS
-────────
-1. Multi-Cloud CI/CD Pipeline
-   - Implemented end-to-end pipeline across AWS, Azure, GCP
-   - Technologies: Jenkins, Docker, Kubernetes, Terraform
-
-2. Security Monitoring Stack
-   - Deployed Wazuh, Suricata, ELK stack for threat detection
-   - Technologies: Wazuh, ELK Stack, Docker, Grafana
-
-3. Kubernetes Cluster Automation
-   - Automated provisioning of K8s clusters across cloud providers
-   - Technologies: Terraform, Kubernetes, Ansible, Helm
-
-CERTIFICATIONS
-──────────────
-• Diploma in DevSysOps Engineer (Al-Nafi International College)
-• DevOps & MLOps Certification (DICE Analytics)
-
-────────────────────────────────────────────────
-This is a sample resume. Please replace with your actual PDF resume.
-For real deployment, link to your actual resume PDF file.
-        `;
-        
-        const blob = new Blob([resumeContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'H_M_U_Rafique_DevOps_Resume.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-        
-        alert('Sample resume downloaded! For production, replace with link to your actual PDF resume.');
-    });
-    
-    // Contact Form Submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name') || document.querySelector('input[type="text"]').value;
-            const email = formData.get('email') || document.querySelector('input[type="email"]').value;
-            const subject = formData.get('subject') || document.querySelectorAll('input[type="text"]')[1]?.value;
-            const message = formData.get('message') || document.querySelector('textarea').value;
-            
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Show success message
-            alert(`Thank you ${name}! Your message has been sent successfully. I'll get back to you soon at ${email}.`);
-            contactForm.reset();
-            
-            // Note: For production, use a real form service like:
-            // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-            //     method: 'POST',
-            //     body: formData,
-            //     headers: { 'Accept': 'application/json' }
-            // })
-        });
-    }
-    
-    // Edit Contact Information
-    const editableFields = document.querySelectorAll('.editable');
-    editableFields.forEach(field => {
-        field.addEventListener('click', function() {
-            const currentText = this.textContent;
-            const fieldName = this.id.replace('-text', '');
-            const promptText = fieldName === 'email' ? 'Enter your email address:' : 
-                             fieldName === 'phone' ? 'Enter your phone number:' : 
-                             'Enter your location:';
-            
-            const newText = prompt(promptText, currentText);
-            if (newText && newText.trim() !== '' && newText !== currentText) {
-                this.textContent = newText;
-                // Save to localStorage
-                localStorage.setItem(fieldName, newText);
-            }
-        });
-        
-        // Load saved data
-        const fieldName = field.id.replace('-text', '');
-        const savedValue = localStorage.getItem(fieldName);
-        if (savedValue && !savedValue.includes('Click to add')) {
-            field.textContent = savedValue;
-        }
-    });
-    
-    // Smooth Scrolling for Anchor Links
+    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                e.preventDefault();
+                // Update active nav link
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Scroll to target
                 window.scrollTo({
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
@@ -225,51 +140,91 @@ For real deployment, link to your actual resume PDF file.
         });
     });
     
-    // Animate skill bars on scroll
-    const skillBars = document.querySelectorAll('.skill-level');
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For now, we'll just show a success message
+            alert(`Thank you, ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+    }
+    
+    // CV Download Button
+    const downloadCvBtn = document.getElementById('download-cv');
+    if (downloadCvBtn) {
+        downloadCvBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('CV download would start here. In a real implementation, this would download your PDF CV.');
+            // In real implementation: window.open('path/to/your-cv.pdf', '_blank');
+        });
+    }
+    
+    // Progress bar animation on scroll
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 300);
+        });
+    }
+    
+    // Animate progress bars when they come into view
+    const observerOptions = {
+        threshold: 0.5
+    };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const skillLevel = entry.target;
-                const width = skillLevel.style.width;
-                skillLevel.style.animation = `fillBar 1.5s ease forwards`;
-                skillLevel.style.setProperty('--target-width', width);
-                observer.unobserve(skillLevel);
+                animateProgressBars();
+                observer.unobserve(entry.target);
             }
         });
-    }, { 
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    }, observerOptions);
     
-    skillBars.forEach(bar => observer.observe(bar));
+    const buildingSection = document.querySelector('.building-section');
+    if (buildingSection) {
+        observer.observe(buildingSection);
+    }
     
-    // Back to Top Button
-    const backToTopButton = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
-        }
-        
-        // Add active class to nav links
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
+    // Active navigation link on scroll
+    window.addEventListener('scroll', function() {
         let current = '';
+        const sections = document.querySelectorAll('section[id]');
+        
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
+            const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            if (scrollY >= (sectionTop - 100)) {
                 current = section.getAttribute('id');
             }
         });
         
-        navLinks.forEach(link => {
+        // Update active nav link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
                 link.classList.add('active');
@@ -277,105 +232,86 @@ For real deployment, link to your actual resume PDF file.
         });
     });
     
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Floating elements animation delay
-    const floatIcons = document.querySelectorAll('.float-icon');
-    floatIcons.forEach((icon, index) => {
-        icon.style.animationDelay = `${index * 0.5}s`;
-    });
-    
-    // Initialize skill bars with animation
-    setTimeout(() => {
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
-        });
-    }, 500);
-    
-    // Add click animation to buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Create ripple effect
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            this.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-    
-    // Add CSS for ripple effect
-    const style = document.createElement('style');
-    style.textContent = `
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(0);
-            animation: ripple-animation 0.6s linear;
-        }
+    // Add animation to cards on scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.about-card, .expertise-card, .project-card, .award-card, .cert-card, .education-card');
         
-        @keyframes ripple-animation {
-            to {
-                transform: scale(4);
-                opacity: 0;
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if (elementPosition < screenPosition) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
             }
-        }
+        });
+    };
+    
+    // Set initial state for animated elements
+    document.querySelectorAll('.about-card, .expertise-card, .project-card, .award-card, .cert-card, .education-card').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Run animation on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    // Run once on load
+    animateOnScroll();
+    
+    // Initialize tooltips for certification buttons
+    document.querySelectorAll('.btn-cert').forEach(button => {
+        button.addEventListener('click', function() {
+            const certTitle = this.parentElement.querySelector('.cert-title').textContent;
+            alert(`This would show the "${certTitle}" credential. In a real implementation, this would open a modal or link to the actual certificate.`);
+        });
+    });
+    
+    // Add hover effect to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
         
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(-5px) scale(1)';
+        });
+    });
+    
+    // Initialize theme (for future dark mode toggle)
+    const themeToggle = document.createElement('button');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    themeToggle.className = 'theme-toggle';
+    themeToggle.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: var(--shadow);
     `;
-    document.head.appendChild(style);
     
-    // Form validation styling
-    const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
-    formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            if (this.value.trim() === '') {
-                this.style.borderColor = 'var(--danger)';
-            } else {
-                this.style.borderColor = 'var(--primary)';
-            }
-        });
-        
-        input.addEventListener('input', function() {
-            this.style.borderColor = 'var(--gray-light)';
-        });
+    // Uncomment to add theme toggle
+    // document.body.appendChild(themeToggle);
+    
+    // Print-friendly page
+    window.addEventListener('beforeprint', function() {
+        document.querySelector('.chat-widget').style.display = 'none';
+        document.querySelector('.theme-toggle').style.display = 'none';
     });
     
-    // Initialize with active section
-    const initialSection = window.location.hash || '#home';
-    const initialLink = document.querySelector(`.nav-menu a[href="${initialSection}"]`);
-    if (initialLink) {
-        initialLink.classList.add('active');
-    }
-    
-    // Console greeting
-    console.log('%c👋 Hello! Welcome to H.M.U. Rafique\'s Portfolio', 'color: #0d9488; font-size: 16px; font-weight: bold;');
-    console.log('%c🚀 DevOps Engineer | Cloud Specialist | Automation Expert', 'color: #0891b2; font-size: 14px;');
-    console.log('%c💼 Open to opportunities in DevOps, Cloud Engineering, and SRE roles', 'color: #64748b; font-size: 12px;');
+    window.addEventListener('afterprint', function() {
+        document.querySelector('.chat-widget').style.display = 'block';
+        document.querySelector('.theme-toggle').style.display = 'block';
+    });
 });
-
