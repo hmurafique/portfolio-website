@@ -31,30 +31,46 @@
         </div>
     </nav>
 
-    <!-- Hero Section - UPDATED -->
+    <!-- Hero Section - UPDATED with Image Layout -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h4 class="hero-subtitle">HELLO, I'M</h4>
-                    <h1 class="hero-title">Hafiz Muhammad Umar Rafique</h1>
-                    <h2 class="hero-role">DevSysOps Engineer</h2>
+                <!-- Left Column: Text Content -->
+                <div class="hero-left">
+                    <!-- HELLO, I'M Section -->
+                    <div class="hello-section">
+                        <h1 class="hello-text">HELLO, I'M</h1>
+                    </div>
+                    
+                    <!-- Name and Title -->
+                    <div class="name-title">
+                        <h2 class="name">Hafiz Muhammad Umar Rafique</h2>
+                        <h3 class="title">DevSysOps Engineer</h3>
+                    </div>
                     
                     <!-- Multi-Cloud Infrastructure as Code CI/CD Security -->
                     <div class="skills-highlight">
-                        <span class="skill-highlight">Multi-Cloud</span>
-                        <span class="skill-highlight">Infrastructure as Code</span>
-                        <span class="skill-highlight">CI/CD</span>
-                        <span class="skill-highlight">Security</span>
+                        <div class="skill-column">
+                            <span class="skill-tag-icon">Multi-Cloud</span>
+                            <span class="skill-tag-icon">Infrastructure as Code</span>
+                        </div>
+                        <div class="skill-column">
+                            <span class="skill-tag-icon">CI/CD</span>
+                            <span class="skill-tag-icon">Security</span>
+                        </div>
                     </div>
                     
-                    <p class="hero-description">
-                        3+ years experience in building scalable infrastructure,
-                        automating deployment pipelines, and implementing robust
-                        monitoring solutions across AWS, Azure, and GCP with
-                        expertise in Terraform and Perforce Helix Core.
-                    </p>
+                    <!-- Experience Paragraph -->
+                    <div class="experience-section">
+                        <p class="experience-text">
+                            3+ years experience in building scalable infrastructure,
+                            automating deployment pipelines, and implementing robust
+                            monitoring solutions across AWS, Azure, and GCP with
+                            expertise in Terraform and Perforce Helix Core.
+                        </p>
+                    </div>
                     
+                    <!-- Buttons -->
                     <div class="action-buttons">
                         <a href="#contact" class="btn btn-primary">
                             Let's Connect
@@ -69,45 +85,92 @@
                         <h3 class="devsysops-title">DevSysOps Engineer</h3>
                         <p class="devsysops-subtitle">(DevOps & SysOps Engineer)</p>
                         
-                        <!-- Skills List -->
-                        <div class="skills-list">
+                        <!-- Skills Grid Layout -->
+                        <div class="skills-grid">
+                            <!-- Row 1 -->
                             <div class="skills-row">
-                                <span class="skill-item">Linux</span>
-                                <span class="skill-item">BASH Scripting</span>
-                                <span class="skill-item">Docker</span>
-                                <span class="skill-item">Kubernetes</span>
-                                <span class="skill-item">CI/CD Pipelines (Azure DevOps | GitHub Actions | GitLab | Jenkins)</span>
+                                <span class="skill-item-icon">
+                                    <i class="fab fa-linux"></i> Linux
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-terminal"></i> BASH Scripting
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fab fa-docker"></i> Docker
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-ship"></i> Kubernetes
+                                </span>
                             </div>
+                            
+                            <!-- Row 2 -->
                             <div class="skills-row">
-                                <span class="skill-item">Terraform</span>
-                                <span class="skill-item">AWS</span>
-                                <span class="skill-item">AZURE</span>
-                                <span class="skill-item">GCP</span>
-                                <span class="skill-item">Grafana</span>
-                                <span class="skill-item">Prometheus</span>
+                                <span class="skill-item-icon large">
+                                    <i class="fas fa-sync-alt"></i> CI/CD Pipelines (Azure DevOps | GitHub Actions | GitLab | Jenkins)
+                                </span>
                             </div>
+                            
+                            <!-- Row 3 -->
                             <div class="skills-row">
-                                <span class="skill-item">Wazuh</span>
-                                <span class="skill-item">Suricata</span>
-                                <span class="skill-item">Zeek</span>
-                                <span class="skill-item">ELK (Elasticsearch | Logstash | Kibana)</span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-layer-group"></i> Terraform
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fab fa-aws"></i> AWS
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fab fa-microsoft"></i> AZURE
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fab fa-google"></i> GCP
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-chart-bar"></i> Grafana
+                                </span>
+                            </div>
+                            
+                            <!-- Row 4 -->
+                            <div class="skills-row">
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-bolt"></i> Prometheus
+                                </span>
+                            </div>
+                            
+                            <!-- Row 5 -->
+                            <div class="skills-row">
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-user-shield"></i> Wazuh
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-eye"></i> Suricata
+                                </span>
+                                <span class="skill-item-icon">
+                                    <i class="fas fa-binoculars"></i> Zeek
+                                </span>
+                            </div>
+                            
+                            <!-- Row 6 -->
+                            <div class="skills-row">
+                                <span class="skill-item-icon large">
+                                    <i class="fas fa-search"></i> ELK (Elasticsearch | Logstash | Kibana)
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Right side with HMUR -->
-                <div class="hero-image">
-                    <div class="profile-placeholder">
-                        <div class="initials-large">HMUR</div>
-                        <div class="profile-text">Hafiz Muhammad Umar Rafique</div>
+                <!-- Right Column: HMUR Section -->
+                <div class="hero-right">
+                    <div class="hmur-section">
+                        <div class="hmur-large">HMUR</div>
+                        <div class="hmur-name">Hafiz Muhammad Umar Rafique</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rest of the code remains the same -->
+    <!-- Rest of the sections remain EXACTLY THE SAME -->
     <!-- Building Experience Animation -->
     <section class="building-section">
         <div class="container">
@@ -830,4 +893,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
