@@ -129,7 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.nav-menu a').forEach(link => {
                     link.classList.remove('active');
                 });
-                this.classList.add('active');
+                
+                // Find and activate the clicked link
+                const clickedLink = document.querySelector(`.nav-menu a[href="${targetId}"]`);
+                if (clickedLink) {
+                    clickedLink.classList.add('active');
+                }
                 
                 // Scroll to target
                 window.scrollTo({
@@ -168,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // CV Download Button
-    const downloadCvBtn = document.getElementById('download-cv');
+    const downloadCvBtn = document.querySelector('.btn-secondary[target="_blank"]');
     if (downloadCvBtn) {
         downloadCvBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -218,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
-            if (scrollY >= (sectionTop - 100)) {
+            if (scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
         });
@@ -278,40 +283,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize theme (for future dark mode toggle)
-    const themeToggle = document.createElement('button');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    themeToggle.className = 'theme-toggle';
-    themeToggle.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: var(--shadow);
-    `;
-    
-    // Uncomment to add theme toggle
-    // document.body.appendChild(themeToggle);
-    
     // Print-friendly page
     window.addEventListener('beforeprint', function() {
         document.querySelector('.chat-widget').style.display = 'none';
-        document.querySelector('.theme-toggle').style.display = 'none';
     });
     
     window.addEventListener('afterprint', function() {
         document.querySelector('.chat-widget').style.display = 'block';
-        document.querySelector('.theme-toggle').style.display = 'block';
     });
+    
+    // Initialize tabs on page load
+    if (tabBtns.length > 0) {
+        // Show first tab by default
+        document.querySelector('.tab-btn.active').click();
+    }
 });
