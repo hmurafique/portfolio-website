@@ -118,4 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'translateY(0)';
         });
     });
+// Fix fast scrolling animations
+window.addEventListener('load', function() {
+    // Building section animations ko slow karein
+    const progressBars = document.querySelectorAll('.progress-fill, .meter-fill');
+    
+    if (progressBars.length > 0) {
+        // Animation delay add karein
+        progressBars.forEach((bar, index) => {
+            setTimeout(() => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'width 2s ease-in-out'; // 2 seconds slow
+                    bar.style.width = width;
+                }, 100);
+            }, index * 300);
+        });
+    }
+    
+    // Infinite scrolling animation hata dein (optional)
+    const buildingCards = document.querySelectorAll('.building-card');
+    buildingCards.forEach(card => {
+        card.style.animation = 'none'; // Animation disable
+    });
+});
 });
