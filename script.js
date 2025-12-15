@@ -1,317 +1,216 @@
-// script.js - Complete JavaScript for H. M. U. Rafique Portfolio
+// ============================================
+// MAIN SCRIPT FOR PORTFOLIO WEBSITE - CORRECTED
+// ============================================
 
+// DOM Load Complete
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Portfolio website loaded");
     
-    // Mobile Navigation Toggle
+    // Mobile Menu Toggle - CORRECT SELECTORS
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (hamburger) {
+    if (hamburger && navMenu) {
+        console.log("Mobile menu elements found");
+        
         hamburger.addEventListener('click', function() {
+            console.log("Hamburger clicked");
+            
+            // Toggle active classes
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            
+            // Change body padding when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    } else {
+        console.error("Mobile menu elements not found!");
+        console.log("Hamburger found:", hamburger);
+        console.log("Nav menu found:", navMenu);
     }
     
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    // Smooth Scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL without page jump
+                history.pushState(null, null, targetId);
+            }
         });
     });
     
-    // Tab Switching Functionality
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons and contents
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Show corresponding content
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-        });
+    // Navigation bar style on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.main-nav');
+        if (window.scrollY > 100) {
+            navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+        } else {
+            navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+        }
     });
+    
+    // Active link highlight on scroll
+    const updateActiveLink = () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', updateActiveLink);
     
     // Chat Widget Functionality
     const chatToggle = document.getElementById('chatToggle');
     const chatBox = document.getElementById('chatBox');
     const chatClose = document.getElementById('chatClose');
-    const chatInput = document.getElementById('chatInput');
-    const sendMessageBtn = document.getElementById('sendMessage');
     
     if (chatToggle && chatBox) {
-        // Toggle chat box
-        chatToggle.addEventListener('click', function() {
+        chatToggle.addEventListener('click', () => {
             chatBox.classList.toggle('active');
         });
         
-        // Close chat box
         if (chatClose) {
-            chatClose.addEventListener('click', function() {
+            chatClose.addEventListener('click', () => {
                 chatBox.classList.remove('active');
             });
         }
         
-        // Send message functionality
-        function sendMessage() {
+        // Chat message sending
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatBody = document.querySelector('.chat-body');
+        
+        if (sendMessage && chatInput && chatBody) {
+            sendMessage.addEventListener('click', sendChatMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+        }
+        
+        function sendChatMessage() {
             const message = chatInput.value.trim();
             if (message) {
                 // Add user message
                 const userMessage = document.createElement('div');
                 userMessage.className = 'chat-message user';
                 userMessage.innerHTML = `<p>${message}</p>`;
-                document.querySelector('.chat-body').appendChild(userMessage);
+                chatBody.appendChild(userMessage);
                 
                 // Clear input
                 chatInput.value = '';
                 
                 // Scroll to bottom
-                const chatBody = document.querySelector('.chat-body');
                 chatBody.scrollTop = chatBody.scrollHeight;
                 
-                // Simulate bot response after delay
+                // Simulate bot response
                 setTimeout(() => {
-                    const botResponses = [
+                    const responses = [
                         "Thanks for your message! I'll get back to you soon.",
-                        "That's interesting! Could you tell me more about that?",
-                        "I can help you with DevOps, Terraform, or Perforce Helix Core questions. What would you like to know?",
-                        "Great question! As a DevSysOps Engineer, I specialize in multi-cloud infrastructure and CI/CD pipelines.",
-                        "Feel free to email me at contact@hmurafique.com for detailed discussions."
+                        "Great question! Let me think about the best DevOps solution for that.",
+                        "I appreciate your interest in my DevOps services!"
                     ];
                     
-                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
                     
                     const botMessage = document.createElement('div');
                     botMessage.className = 'chat-message bot';
                     botMessage.innerHTML = `<p>${randomResponse}</p>`;
-                    document.querySelector('.chat-body').appendChild(botMessage);
+                    chatBody.appendChild(botMessage);
                     
-                    // Scroll to bottom
                     chatBody.scrollTop = chatBody.scrollHeight;
                 }, 1000);
             }
         }
-        
-        // Send message on button click
-        if (sendMessageBtn) {
-            sendMessageBtn.addEventListener('click', sendMessage);
-        }
-        
-        // Send message on Enter key
-        if (chatInput) {
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-        }
     }
     
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Update active nav link
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // Scroll to target
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Form Submission
+    // Contact Form Submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
+            // Simple validation
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields.');
-                return;
-            }
-            
-            // In a real application, you would send this data to a server
-            // For now, we'll just show a success message
-            alert(`Thank you, ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
-            
-            // Reset form
-            contactForm.reset();
-        });
-    }
-    
-    // CV Download Button
-    const downloadCvBtn = document.getElementById('download-cv');
-    if (downloadCvBtn) {
-        downloadCvBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('CV download would start here. In a real implementation, this would download your PDF CV.');
-            // In real implementation: window.open('path/to/your-cv.pdf', '_blank');
-        });
-    }
-    
-    // Progress bar animation on scroll
-    function animateProgressBars() {
-        const progressBars = document.querySelectorAll('.progress-fill');
-        progressBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0%';
-            
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 300);
-        });
-    }
-    
-    // Animate progress bars when they come into view
-    const observerOptions = {
-        threshold: 0.5
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateProgressBars();
-                observer.unobserve(entry.target);
+            if (name && email && message) {
+                alert(`Thank you ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
+                contactForm.reset();
+            } else {
+                alert('Please fill in all required fields.');
             }
         });
-    }, observerOptions);
-    
-    const buildingSection = document.querySelector('.building-section');
-    if (buildingSection) {
-        observer.observe(buildingSection);
     }
     
-    // Active navigation link on scroll
-    window.addEventListener('scroll', function() {
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
+    // Add hover effects to cards
+    const cards = document.querySelectorAll('.project-card, .expertise-card, .about-card, .award-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
         });
         
-        // Update active nav link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'none';
         });
     });
     
-    // Add animation to cards on scroll
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.about-card, .expertise-card, .project-card, .award-card, .cert-card, .education-card');
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-            
-            if (elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Set initial state for animated elements
-    document.querySelectorAll('.about-card, .expertise-card, .project-card, .award-card, .cert-card, .education-card').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
-    // Run animation on scroll
-    window.addEventListener('scroll', animateOnScroll);
-    // Run once on load
-    animateOnScroll();
-    
-    // Initialize tooltips for certification buttons
+    // Certificate buttons
     document.querySelectorAll('.btn-cert').forEach(button => {
         button.addEventListener('click', function() {
-            const certTitle = this.parentElement.querySelector('.cert-title').textContent;
-            alert(`This would show the "${certTitle}" credential. In a real implementation, this would open a modal or link to the actual certificate.`);
+            const card = this.closest('.cert-card');
+            const title = card.querySelector('.cert-title').textContent;
+            alert(`Certificate: ${title}\n\nCredential details would be shown here.`);
         });
     });
     
-    // Add hover effect to project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(-5px) scale(1)';
-        });
-    });
-    
-    // Initialize theme (for future dark mode toggle)
-    const themeToggle = document.createElement('button');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-    themeToggle.className = 'theme-toggle';
-    themeToggle.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        left: 30px;
-        width: 50px;
-        height: 50px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: var(--shadow);
-    `;
-    
-    // Uncomment to add theme toggle
-    // document.body.appendChild(themeToggle);
-    
-    // Print-friendly page
-    window.addEventListener('beforeprint', function() {
-        document.querySelector('.chat-widget').style.display = 'none';
-        document.querySelector('.theme-toggle').style.display = 'none';
-    });
-    
-    window.addEventListener('afterprint', function() {
-        document.querySelector('.chat-widget').style.display = 'block';
-        document.querySelector('.theme-toggle').style.display = 'block';
-    });
+    // Initialize
+    updateActiveLink(); // Set initial active link
 });
