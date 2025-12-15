@@ -1,3 +1,8 @@
+body {
+    padding-top: 80px !important; /* Important lagayein agar kaam na kare */
+}
+
+/* Agar aapka existing body style hai, toh usmein padding-top add karein */
 <style>
 /* === NAVIGATION BAR STYLES === */
 .navbar {
