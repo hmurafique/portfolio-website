@@ -133,3 +133,28 @@ function initTypingAnimation() {
 
 // Call this function when page loads
 document.addEventListener('DOMContentLoaded', initTypingAnimation);
+// Animate skill bars when scrolled into view
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-fill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillFill = entry.target;
+                const width = skillFill.style.width;
+                skillFill.style.setProperty('--target-width', width);
+                skillFill.style.animation = 'fillBar 1.5s ease-in-out forwards';
+                observer.unobserve(skillFill);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    skillBars.forEach(bar => {
+        observer.observe(bar);
+    });
+}
+
+// Call this function when page loads
+document.addEventListener('DOMContentLoaded', animateSkillBars);
