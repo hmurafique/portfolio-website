@@ -451,3 +451,210 @@ section {
         font-size: 0.85rem;
     }
 }
+/* Experience Section */
+.experience {
+    background: #f8fafc;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #2563eb;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-date {
+    flex: 1;
+    padding: 1rem;
+    text-align: right;
+    font-weight: 600;
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-date {
+    text-align: left;
+}
+
+.timeline-content {
+    flex: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    position: relative;
+    margin: 0 2rem;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    width: 20px;
+    height: 20px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -10px;
+    border-left: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -10px;
+    border-right: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Timeline dots */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    width: 16px;
+    height: 16px;
+    background: #2563eb;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #2563eb;
+}
+
+/* Job Content */
+.job-header {
+    margin-bottom: 1.5rem;
+}
+
+.job-title {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-company {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.job-description {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.job-responsibilities {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.job-responsibilities li {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    align-items: flex-start;
+}
+
+.job-responsibilities i {
+    color: #10b981;
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+}
+
+.job-responsibilities span {
+    color: #475569;
+    line-height: 1.5;
+}
+
+.job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.job-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.job-tag:hover {
+    background: #bae6fd;
+    transform: translateY(-2px);
+}
+
+.job-tag i {
+    font-size: 0.9rem;
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: column !important;
+        margin-left: 60px;
+    }
+    
+    .timeline-date {
+        text-align: left !important;
+        padding-left: 0;
+        font-size: 1rem;
+        order: 2;
+        margin-top: 0.5rem;
+    }
+    
+    .timeline-content {
+        margin: 0;
+        order: 1;
+    }
+    
+    .timeline-content::before {
+        display: none;
+    }
+    
+    .timeline-item::after {
+        left: 22px;
+    }
+    
+    .job-tags {
+        gap: 0.5rem;
+    }
+    
+    .job-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
