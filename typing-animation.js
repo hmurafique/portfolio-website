@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "Assembling DevOps Solutions",
         "Initializing Cloud Infrastructure", 
         "Loading DevOps Pipeline",
-        "Deploying Portfolio"
+        "Deploying Projects"
     ];
     
     let textIndex = 0;
