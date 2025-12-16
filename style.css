@@ -1,3 +1,25 @@
+:root {
+    /* Puneeth ke exact colors */
+    --primary-blue: #2563eb;
+    --dark-blue: #1e40af;
+    --light-blue: #dbeafe;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+}
+
+/* Sab jagah yeh colors use karein */
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Blue buttons aur links */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
 /* Reset and Base Styles */
 * {
     margin: 0;
