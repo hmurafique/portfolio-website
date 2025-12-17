@@ -415,22 +415,6 @@ section {
     color: white;
 }
 
-/* Skill Bars */
-.skill-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.skill-bar {
-    margin-bottom: 0.5rem;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
 
 .skill-info span:first-child {
     color: #334155;
@@ -442,26 +426,7 @@ section {
     font-size: 0.9rem;
 }
 
-.skill-progress {
-    height: 8px;
-    background: #e2e8f0;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
-    border-radius: 4px;
-    width: 0;
-    transition: width 1.5s ease-in-out;
-}
-
 /* Animation for skill bars */
-@keyframes fillBar {
-    from { width: 0; }
-    to { width: var(--target-width); }
-}
 
 /* Responsive Skills */
 @media (max-width: 992px) {
