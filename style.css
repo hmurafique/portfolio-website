@@ -381,20 +381,26 @@ section {
     padding-bottom: 0.5rem;
 }
 
-.tool-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-
+/* Tool Items with Icons */
 .tool-item {
     background: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
     font-size: 0.9rem;
     color: #475569;
     border: 1px solid #e2e8f0;
     transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.3rem;
+}
+
+.tool-item i {
+    color: #2563eb;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
 }
 
 .tool-item:hover {
@@ -402,6 +408,11 @@ section {
     color: white;
     border-color: #2563eb;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.tool-item:hover i {
+    color: white;
 }
 
 /* Skill Bars */
