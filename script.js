@@ -1,53 +1,26 @@
-// ============================================
-// MAIN SCRIPT FOR PORTFOLIO WEBSITE - CORRECTED
-// ============================================
-
-// DOM Load Complete
+// Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Portfolio website loaded");
-    
-    // Mobile Menu Toggle - CORRECT SELECTORS
-    const hamburger = document.querySelector('.hamburger');
+    const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (hamburger && navMenu) {
-        console.log("Mobile menu elements found");
-        
-        hamburger.addEventListener('click', function() {
-            console.log("Hamburger clicked");
-            
-            // Toggle active classes
-            hamburger.classList.toggle('active');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            
-            // Change body padding when menu is open
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
         });
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-    } else {
-        console.error("Mobile menu elements not found!");
-        console.log("Hamburger found:", hamburger);
-        console.log("Nav menu found:", navMenu);
     }
     
-    // Smooth Scrolling for all anchor links
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.nav-container')) {
+            navMenu.classList.remove('active');
+        }
+    });
+    
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
@@ -57,160 +30,242 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
                 
-                // Update URL without page jump
-                history.pushState(null, null, targetId);
+                // Close mobile menu
+                navMenu.classList.remove('active');
             }
         });
     });
+});
+// Typing Animation for Hero
+function initTypingAnimation() {
+    const roles = [
+        "DevSysOps Engineer",
+        "DevOps Specialist", 
+        "Cloud Architect",
+        "Infrastructure Engineer"
+    ];
     
-    // Navigation bar style on scroll
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.main-nav');
-        if (window.scrollY > 100) {
-            navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.98)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-        } else {
-            navbar.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
-        }
-    });
+    const typedText = document.querySelector('.typed-text');
+    const cursor = document.querySelector('.cursor');
     
-    // Active link highlight on scroll
-    const updateActiveLink = () => {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-menu a');
+    if (!typedText) return;
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
+    
+    function type() {
+        const currentRole = roles[roleIndex];
         
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
+        if (!isDeleting && !isPaused) {
+            // Typing forward
+            typedText.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
             
-            if (window.scrollY >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            const href = link.getAttribute('href');
-            if (href === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    };
-    
-    window.addEventListener('scroll', updateActiveLink);
-    
-    // Chat Widget Functionality
-    const chatToggle = document.getElementById('chatToggle');
-    const chatBox = document.getElementById('chatBox');
-    const chatClose = document.getElementById('chatClose');
-    
-    if (chatToggle && chatBox) {
-        chatToggle.addEventListener('click', () => {
-            chatBox.classList.toggle('active');
-        });
-        
-        if (chatClose) {
-            chatClose.addEventListener('click', () => {
-                chatBox.classList.remove('active');
-            });
-        }
-        
-        // Chat message sending
-        const chatInput = document.getElementById('chatInput');
-        const sendMessage = document.getElementById('sendMessage');
-        const chatBody = document.querySelector('.chat-body');
-        
-        if (sendMessage && chatInput && chatBody) {
-            sendMessage.addEventListener('click', sendChatMessage);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendChatMessage();
-                }
-            });
-        }
-        
-        function sendChatMessage() {
-            const message = chatInput.value.trim();
-            if (message) {
-                // Add user message
-                const userMessage = document.createElement('div');
-                userMessage.className = 'chat-message user';
-                userMessage.innerHTML = `<p>${message}</p>`;
-                chatBody.appendChild(userMessage);
-                
-                // Clear input
-                chatInput.value = '';
-                
-                // Scroll to bottom
-                chatBody.scrollTop = chatBody.scrollHeight;
-                
-                // Simulate bot response
+            if (charIndex === currentRole.length) {
+                isPaused = true;
                 setTimeout(() => {
-                    const responses = [
-                        "Thanks for your message! I'll get back to you soon.",
-                        "Great question! Let me think about the best DevOps solution for that.",
-                        "I appreciate your interest in my DevOps services!"
-                    ];
-                    
-                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                    
-                    const botMessage = document.createElement('div');
-                    botMessage.className = 'chat-message bot';
-                    botMessage.innerHTML = `<p>${randomResponse}</p>`;
-                    chatBody.appendChild(botMessage);
-                    
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                }, 1000);
+                    isPaused = false;
+                    isDeleting = true;
+                    setTimeout(type, 500);
+                }, 2000);
+                return;
+            }
+        } else if (isDeleting && !isPaused) {
+            // Deleting
+            typedText.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            
+            if (charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
             }
         }
+        
+        const speed = isDeleting ? 50 : 100;
+        setTimeout(type, speed);
     }
     
-    // Contact Form Submission
+    // Dynamic text animation
+    const dynamicText = document.getElementById('dynamic-text');
+    const texts = [
+        "Assembling DevOps Solutions",
+        "Initializing Cloud Infrastructure",
+        "Loading DevOps Pipeline",
+        "Deploying Portfolio"
+    ];
+    
+    if (dynamicText) {
+        let textIndex = 0;
+        let textCharIndex = 0;
+        let isTextDeleting = false;
+        
+        function typeDynamicText() {
+            const currentText = texts[textIndex];
+            
+            if (!isTextDeleting && textCharIndex < currentText.length) {
+                dynamicText.textContent = currentText.substring(0, textCharIndex + 1);
+                textCharIndex++;
+                setTimeout(typeDynamicText, 100);
+            } else if (!isTextDeleting && textCharIndex === currentText.length) {
+                setTimeout(() => {
+                    isTextDeleting = true;
+                    typeDynamicText();
+                }, 2000);
+            } else if (isTextDeleting && textCharIndex > 0) {
+                dynamicText.textContent = currentText.substring(0, textCharIndex - 1);
+                textCharIndex--;
+                setTimeout(typeDynamicText, 50);
+            } else {
+                isTextDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeDynamicText, 500);
+            }
+        }
+        
+        typeDynamicText();
+    }
+    
+    // Start typing animation after a delay
+    setTimeout(type, 1000);
+}
+
+// Call this function when page loads
+document.addEventListener('DOMContentLoaded', initTypingAnimation);
+// Animate skill bars when scrolled into view
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-fill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillFill = entry.target;
+                const width = skillFill.style.width;
+                skillFill.style.setProperty('--target-width', width);
+                skillFill.style.animation = 'fillBar 1.5s ease-in-out forwards';
+                observer.unobserve(skillFill);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+    
+    skillBars.forEach(bar => {
+        observer.observe(bar);
+    });
+}
+
+// Call this function when page loads
+document.addEventListener('DOMContentLoaded', animateSkillBars);
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simple validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
             
-            if (name && email && message) {
-                alert(`Thank you ${name}! Your message has been sent. I'll get back to you soon at ${email}.`);
-                contactForm.reset();
-            } else {
-                alert('Please fill in all required fields.');
-            }
+            // Here you would typically send the data to a server
+            // For now, we'll just show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
         });
     }
     
-    // Add hover effects to cards
-    const cards = document.querySelectorAll('.project-card, .expertise-card, .about-card, .award-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-5px)';
-            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+    // Chatbot Widget
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotContainer = document.getElementById('chatbot-container');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotSend = document.getElementById('chatbot-send');
+    const chatbotQuestion = document.getElementById('chatbot-question');
+    const chatbotBody = document.getElementById('chatbot-body');
+    
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener('click', function() {
+            chatbotContainer.classList.toggle('active');
         });
         
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = 'none';
+        chatbotClose.addEventListener('click', function() {
+            chatbotContainer.classList.remove('active');
         });
-    });
-    
-    // Certificate buttons
-    document.querySelectorAll('.btn-cert').forEach(button => {
-        button.addEventListener('click', function() {
-            const card = this.closest('.cert-card');
-            const title = card.querySelector('.cert-title').textContent;
-            alert(`Certificate: ${title}\n\nCredential details would be shown here.`);
+        
+        chatbotSend.addEventListener('click', sendChatbotMessage);
+        
+        chatbotQuestion.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendChatbotMessage();
+            }
         });
-    });
+        
+        function sendChatbotMessage() {
+            const question = chatbotQuestion.value.trim();
+            if (!question) return;
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chat-message';
+            userMessage.innerHTML = `<p><strong>You:</strong> ${question}</p>`;
+            chatbotBody.appendChild(userMessage);
+            
+            // Clear input
+            chatbotQuestion.value = '';
+            
+            // Show typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'chat-message bot';
+            typingIndicator.innerHTML = '<p><i>AI Assistant is typing...</i></p>';
+            chatbotBody.appendChild(typingIndicator);
+            
+            // Scroll to bottom
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            
+            // Simulate AI response after delay
+            setTimeout(() => {
+                // Remove typing indicator
+                typingIndicator.remove();
+                
+                // Add AI response
+                const response = getChatbotResponse(question);
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'chat-message bot';
+                aiMessage.innerHTML = `<p><strong>AI Assistant:</strong> ${response}</p>`;
+                chatbotBody.appendChild(aiMessage);
+                
+                // Scroll to bottom
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }, 1500);
+        }
+        
+        function getChatbotResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            if (lowerQuestion.includes('skill') || lowerQuestion.includes('technology')) {
+                return "H. M. U. Rafique has expertise in Cloud Platforms (AWS, Azure, GCP), Infrastructure as Code (Terraform), CI/CD (Jenkins, GitHub Actions), Containerization (Docker, Kubernetes), and Monitoring tools (Prometheus, Grafana).";
+            } else if (lowerQuestion.includes('experience') || lowerQuestion.includes('work')) {
+                return "He has worked as Associate DevOps Engineer at Appium Logics Solutions (Jun 2023 - Mar 2025) and as DevOps Engineer Intern (Jan 2023 - Jun 2023).";
+            } else if (lowerQuestion.includes('certif')) {
+                return "Certifications include Terraform Associate, DevSysOps Engineer Diploma, DevOps & MLOps Certification, and AWS Solutions Architect (in progress).";
+            } else if (lowerQuestion.includes('contact') || lowerQuestion.includes('email') || lowerQuestion.includes('phone')) {
+                return "You can contact via email: contact@hmurafique.com or phone: +92 300 1234567";
+            } else if (lowerQuestion.includes('hello') || lowerQuestion.includes('hi')) {
+                return "Hello! How can I help you learn about H. M. U. Rafique's DevOps expertise?";
+            } else {
+                return "I can help you with information about technical skills, work experience, certifications, or contact details. What would you like to know?";
+            }
+        }
+    }
     
-    // Initialize
-    updateActiveLink(); // Set initial active link
+    // Open Map function
+    window.openMap = function() {
+        window.open('https://www.google.com/maps?q=Karachi+Pakistan', '_blank');
+    };
 });
