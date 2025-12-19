@@ -91,9 +91,9 @@ function initTypingAnimation() {
     const dynamicText = document.getElementById('dynamic-text');
     const texts = [
         "Assembling DevOps Solutions",
-        "Initializing Cloud Infrastructure",
-        "Loading DevOps Pipeline",
-        "Deploying Portfolio"
+        "Initializing Cloud Infrastructures",
+        "Loading DevOps Pipelines",
+        "Deploying Projects"
     ];
     
     if (dynamicText) {
